@@ -227,6 +227,8 @@ read_only::get_info_results read_only::get_info(const read_only::get_info_params
 read_only::get_table_rows_result read_only::get_table_rows( const read_only::get_table_rows_params& p )const {
    if( p.table_type == KEYi64 ) {
       return get_table_rows_ex<chain::key_value_index, chain::by_scope_primary>(p);
+   } else if( p.table_type == KEYstr ) {
+      return get_table_rows_ex<chain::keystr_value_index, chain::by_scope_primary>(p);
    } else if( p.table_type == KEYi128i128 ) { 
       if( p.table_key == PRIMARY )
          return get_table_rows_ex<chain::key128x128_value_index, chain::by_scope_primary>(p);
